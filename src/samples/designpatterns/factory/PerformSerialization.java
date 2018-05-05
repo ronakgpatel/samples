@@ -1,8 +1,7 @@
 package samples.designpatterns.factory;
 
-import sun.net.NetworkServer;
-import static samples.designpatterns.factory.ApplicationSerializerFactory.NetworkSerializer;
-import static samples.designpatterns.factory.ApplicationSerializerFactory.DBSerializer;
+import samples.designpatterns.factory.ApplicationSerializerFactory.DBSerializer;
+import samples.designpatterns.factory.ApplicationSerializerFactory.NetworkSerializer;
 
 public class PerformSerialization {
 

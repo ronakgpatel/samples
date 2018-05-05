@@ -1,4 +1,5 @@
 package samples.designpatterns.builder;
+
 public class Item {
 	private String category;
 	private String parentCategory;
@@ -64,53 +65,50 @@ public class Item {
 		this.discount = discount;
 	}
 
-	public static ItemBuilder builder() {
-		return new ItemBuilder();
+	public static Builder builder() {
+		return new Builder();
 	}
 
+	@SuppressWarnings("all")
 	public static void main(String[] args) {
 
-		//Sample creating objects
-		//Item smartphone = Item.builder().category("smartphone").parentCategory("mobiles").build();
-		//Item tablets = Item.builder().category("tablets").build();
-		//Item laptops = Item.builder().category("laptops").price(32000l).discount(10.0d).build();
-		//Item battery = Item.builder().category("batteries").parentCategory("laptop_accessories").price(32000l)
-		//		.discount(10.0d).build();
+		// Sample creating objects
+		Item smartphone = Item.builder().category("smartphone").parentCategory("mobiles").build();
+		Item tablets = Item.builder().category("tablets").build();
+		Item laptops = Item.builder().category("laptops").price(32000l).discount(10.0d).build();
+		Item battery = Item.builder().category("batteries").parentCategory("laptop_accessories").price(32000l)
+				.discount(10.0d).build();
 	}
 
-	public static class ItemBuilder {
+	public static class Builder {
 		private String category;
 		private String parentCategory;
 		public long price;
 		private double discount;
 
-		public ItemBuilder category(String cat) {
+		public Builder category(String cat) {
 			this.category = cat;
 			return this;
 		}
 
-		public ItemBuilder parentCategory(String pCat) {
+		public Builder parentCategory(String pCat) {
 			this.parentCategory = pCat;
 			return this;
 		}
 
-		public ItemBuilder price(long p) {
+		public Builder price(long p) {
 			this.price = p;
 			return this;
 		}
 
-		public ItemBuilder discount(double d) {
+		public Builder discount(double d) {
 			this.discount = d;
 			return this;
 		}
 
 		public Item build() {
-			Item newItem = new Item();
-			newItem.setPrice(price);
-			newItem.setCategory(category);
-			newItem.setParentCategory(parentCategory);
-			newItem.setDiscount(discount);
-			return newItem;
+			return new Item(category, parentCategory, price, discount);// or you can use setter methods
 		}
 	}
+
 }
