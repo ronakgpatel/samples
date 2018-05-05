@@ -1,4 +1,4 @@
-package samples.designpatterns;
+package samples.designpatterns.builder;
 public class Item {
 	private String category;
 	private String parentCategory;
