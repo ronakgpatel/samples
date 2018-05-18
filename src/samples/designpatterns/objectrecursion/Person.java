@@ -16,6 +16,7 @@ public class Person {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
+		//Let address compare each other, we don't iterate on their attributes
 		if (address == null) {
 			if (other.address != null)
 				return false;
